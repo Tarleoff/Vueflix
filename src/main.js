@@ -4,6 +4,10 @@ import router from './router'
 
 const app = createApp(App)
 
-app.use(router)
+import { createPinia } from 'pinia'
+import { authStore } from '@/store/authStore'
 
+app.use(router)
+app.use(createPinia())
+app.config.globalProperties.$auth = authStore();
 app.mount('#app')

@@ -7,10 +7,17 @@
 
 <script>
 export default {
+  created(){
+    this.$auth.$subscribe((mutation, state) => {
+      if (state.isAuthenticated) {
+        this.$router.push('/');
+      }
+    })
+  },
   data() {
     return {
-      email,
-      password,
+      email: "",
+      password: "",
     };
   },
   methods: {
